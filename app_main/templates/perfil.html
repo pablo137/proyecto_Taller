@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Perfiles:</h1>
+
+<h2>Lista de Emprendedores:</h2>
+<ul>
+    {% for Emp in listaEmp %}
+        <img class="icon-user" src="{{ Emp.img_perfil.url }}">
+    <li>
+        {{ Emp.nombre_completo }}
+    </li>
+    <li>
+        {{ Emp.rubro }}
+    </li>
+    {% endfor %}
+</ul>
+<hr>
+<h2>Lista de Consumidores:</h2>
+<ul>
+    {% for Cons in listaCons %}
+    <li>
+        <img class="icon-user" src="{{ Cons.img_perfil.url }}">
+    </li>
+    <li>
+        {{ Cons.nombre_completo }}
+    </li>
+    <li>
+        {{ Cons.nit }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

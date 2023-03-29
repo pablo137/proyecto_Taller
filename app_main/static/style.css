@@ -1,0 +1,37 @@
+.icon-user {
+    background-size: contain;
+    border-radius: 150px;
+    width: 150px;
+    height: 150px;
+}
+
+.fix-search{
+    width: 30%;
+}
+
+.navbar-brand{
+    font-size: 35px;
+    padding-right: 35px;
+}
+
+.color-nav{
+    background-color: rgb(33, 37, 41);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: green !important;
+}
+
+.nav-link{
+    transition: all 0.2s ease-in;
+    color: white;
+}
+
+.nav-link:hover{
+    color: black;
+    background-color: white
+}
+
+li a {
+    border-radius: 5px;
+}

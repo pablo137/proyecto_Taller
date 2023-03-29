@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Pagina registro: </h1>
+
+<ul>
+    <li>
+        <a href="{% url 'registrar' %}">Registrar como Emprendedor</a>
+    </li>
+    <li>
+        <a href="{% url 'registrar_consumidor' %}">Registrar como Consumidor</a>
+    </li>
+</ul>
+{% endblock  %}
