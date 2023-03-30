@@ -20,7 +20,7 @@ def acerca_nosotros(request):
 
 def registrar(request):
     if request.method == 'POST':
-        form = EmprendedorForms(request.POST)
+        form = EmprendedorForms(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             nombre = form.cleaned_data['nombre_completo']
@@ -32,7 +32,7 @@ def registrar(request):
 
 def registrar_consumidor(request):
     if request.method == 'POST':
-        form = ConsumidorForms(request.POST)
+        form = ConsumidorForms(request.POST, request.FILES)
         # if form.is_valid():
         form.save()
         nombre = form.cleaned_data['nombre_completo']

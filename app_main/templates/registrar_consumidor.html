@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1> Registrar un Consumidor: </h1>
-<form action="/registrar/consumidor/" method="POST">
+<form action="{% url 'registrar_consumidor' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button>

@@ -12,4 +12,4 @@ urlpatterns = [
     path('registrar/consumidor/', views.registrar_consumidor, name='registrar_consumidor'),
     path('iniciar_sesion', views.inicar_sesion, name='iniciar_sesion'),
     path('perfil/', views.perfil, name='perfil'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

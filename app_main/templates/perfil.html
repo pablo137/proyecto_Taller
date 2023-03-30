@@ -13,6 +13,8 @@
     <li>
         {{ Emp.rubro }}
     </li>
+    {% empty %}
+    <h2 class="display-5 text-center">No hay Emprendedores registrados</h2>
     {% endfor %}
 </ul>
 <hr>
@@ -28,6 +30,8 @@
     <li>
         {{ Cons.nit }}
     </li>
+    {% empty %}
+    <h2 class="display-5 text-center">No hay Consumidores registrados</h2>
     {% endfor %}
 </ul>
 {% endblock %}
