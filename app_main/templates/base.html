@@ -27,19 +27,19 @@
                     <li>
                         <a href="{% url 'acerca_nosotros' %}" class="nav-link px-2">Acerca de nosotros</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="{% url 'pagina_registro' %}" class="nav-link px-2">Registrarse</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="{% url 'iniciar_sesion' %}" class="nav-link px-2">Iniciar sesion</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="{% url 'perfil' %}" class="nav-link px-2">Perfiles</a>
                     </li>
                 </ul>
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Ingresa</button>
-                    <button type="button" class="btn btn-primary">Registrate</button>
+                    <button type="button" class="btn btn-outline-light me-2"><a href="{% url 'iniciar_sesion' %}" class="nav-link px-2">Iniciar sesion</a></button>
+                    <button type="button" class="btn btn-outline-light"><a href="{% url 'pagina_registro' %}" class="nav-link px-2">Registrarse</a></button>
                     <a href="https://www.facebook.com/">
                       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle ms-3" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
