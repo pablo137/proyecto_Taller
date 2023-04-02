@@ -28,15 +28,17 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3-*0bv0=l5go#8jo8f2wwjd+^xm^$$dl012&73$wquehv5$=-0'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
-
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,6 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -144,8 +150,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # RENDER
 import dj_database_url
 
-DATABASES = {
+DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'db_oneclick',
+    'USER' :'postgres',
+    'PASSWORD' : '123',
+    'HOST' : 'localhost',
+    'PORT' : 5432})}
 
-    'default': dj_database_url.parse(env('DATABASE_URL'))
+# DATABASES = {
 
-}
+#     'default': dj_database_url.parse(env('DATABASE_URL'))
+
+# }
+
