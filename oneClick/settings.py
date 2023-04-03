@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Nuevas apps:
     'app_main.apps.AppMainConfig',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -162,4 +164,10 @@ DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD
 #     'default': dj_database_url.parse(env('DATABASE_URL'))
 
 # }
-
+#CLOUDINARY
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dexh8g1vv',
+    'API_KEY': '353423878312923',
+    'API_SECRET': 'G06U-ir4m2SY0B_aqnKjRVe_owc'
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
