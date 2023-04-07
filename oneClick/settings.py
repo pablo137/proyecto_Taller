@@ -12,22 +12,34 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+import environ
+
+env = environ.Env()
+
+environ.Env.read_env()
+    
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3-*0bv0=l5go#8jo8f2wwjd+^xm^$$dl012&73$wquehv5$=-0'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -40,10 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Nuevas apps:
     'app_main.apps.AppMainConfig',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,16 +90,16 @@ WSGI_APPLICATION = 'oneClick.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_oneclick',
-        'USER' :'postgres',
-        'PASSWORD' : '123',
-        'HOST' : 'localhost',
-        'PORT' : 5432
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'db_oneclick',
+#         'USER' :'postgres',
+#         'PASSWORD' : '123',
+#         'HOST' : 'localhost',
+#         'PORT' : 5432
+#     }
+# }
 
 
 # Password validation
@@ -123,6 +137,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -131,3 +148,26 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# RENDER
+import dj_database_url
+
+DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'db_oneclick',
+    'USER' :'postgres',
+    'PASSWORD' : '123',
+    'HOST' : 'localhost',
+    'PORT' : 5432})}
+
+# DATABASES = {
+
+#     'default': dj_database_url.parse(env('DATABASE_URL'))
+
+# }
+#CLOUDINARY
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dexh8g1vv',
+    'API_KEY': '353423878312923',
+    'API_SECRET': 'G06U-ir4m2SY0B_aqnKjRVe_owc'
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

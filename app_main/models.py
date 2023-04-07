@@ -7,7 +7,7 @@ class Emprendedor(models.Model):
     numero_telefono: models.CharField(max_length=20)
     numero_cuenta_bancaria: models.IntegerField()
     banco = models.CharField(max_length=20)
-    img_perfil = models.ImageField(upload_to="emprendedores", null=True)
+    img_perfil = models.ImageField(upload_to="emprendedores/", null=True)
     direccion = models.CharField(max_length=100)
     rubro = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
@@ -23,7 +23,7 @@ class Consumidor(models.Model):
     numero_telefono: models.CharField(max_length=20)
     banco = models.CharField(max_length=20)
     numero_cuenta_bancaria: models.IntegerField()
-    img_perfil = models.ImageField(upload_to="consumidores", null=True)
+    img_perfil = models.ImageField(upload_to="consumidores/", null=True)
     print(img_perfil)
     # fecha_nacimiento = models.DateTimeField(blank=True)
     def __str__(self) -> str:
