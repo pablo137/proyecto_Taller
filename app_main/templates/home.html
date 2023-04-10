@@ -1,6 +1,14 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1> Home </h1>
+
+{% for categoria in listaCategorias %}
+    {{categoria.nombre_categoria}}
+    <img class="icon-user" src="{{ categoria.img_categoria.url }}">
+{% empty %}
+<h2>No hay Categorias</h2>
+{% endfor %}
+
 {% endblock  %}

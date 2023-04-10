@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(Emprendedor)
 admin.site.register(Consumidor)
+admin.site.register(Categorias)

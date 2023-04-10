@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import  AuthenticationForm
 from .form import EmprendedorForms, ConsumidorForms
-from .models import Emprendedor, Consumidor
+from .models import Emprendedor, Consumidor, Categorias
 
 
 def home(request):
-    return render(request, "home.html")
+    listaCategorias = Categorias.objects.all()
+    context = { 'listaCategorias' :listaCategorias}
+    return render(request, "home.html", context)
 
 
 def contactanos(request):

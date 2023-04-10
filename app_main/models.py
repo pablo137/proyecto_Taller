@@ -28,3 +28,7 @@ class Consumidor(models.Model):
     # fecha_nacimiento = models.DateTimeField(blank=True)
     def __str__(self) -> str:
         return f"Consumidor: {self.nombre_completo}"
+    
+class Categorias(models.Model):
+    nombre_categoria = models.CharField(max_length=100)
+    img_categoria = models.ImageField(upload_to="categoria/", null=True)
