@@ -41,13 +41,13 @@
 </p>
 
 {% for p in propietarios %}
-    <img class="icon-user" src="{{ p.img.url }}">
-    <p>{{p.nombre}}</p>
-    <p><a href="mailto:{{p.correo}}?">{{p.correo}}</a></p>
-    <p><a href="tel:+591{{p.numTelefono}}">{{p.numTelefono}}</a></p>
-   <!--  <p>Telf: {{p.numTelefono}}</p> -->
-    <p>Cargo: {{p.cargo}}</p>
+<img class="icon-user" src="{{ p.img.url }}">
+<p>{{p.nombre}}</p>
+<p><a href="mailto:{{p.correo}}?">{{p.correo}}</a></p>
+<p><a href="tel:+591{{p.numTelefono}}">{{p.numTelefono}}</a></p>
+<p>Cargo: {{p.cargo}}</p>
 {% empty %}
 <h2>No hay propietarios</h2>
 {% endfor %}
+
 {% endblock %}
