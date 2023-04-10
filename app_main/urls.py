@@ -12,4 +12,7 @@ urlpatterns = [
     path('registrar/consumidor/', views.registrar_consumidor, name='registrar_consumidor'),
     path('iniciar_sesion', views.inicar_sesion, name='iniciar_sesion'),
     path('perfil/', views.perfil, name='perfil'),
+
+    path('condiciones/', views.condiciones, name='condiciones'),
+    path('privacidad/', views.privacidad, name='privacidad'),
 ]

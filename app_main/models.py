@@ -32,3 +32,10 @@ class Consumidor(models.Model):
 class Categorias(models.Model):
     nombre_categoria = models.CharField(max_length=100)
     img_categoria = models.ImageField(upload_to="categoria/", null=True)
+
+class Propietarios(models.Model):
+    nombre = models.CharField(max_length=100)
+    numTelefono = models.CharField(max_length=50, null=True)
+    correo = models.EmailField(blank=True)    
+    cargo = models.CharField(max_length=100)
+    img = models.ImageField(upload_to="Propietarios/", null=True)

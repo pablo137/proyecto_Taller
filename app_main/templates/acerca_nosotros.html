@@ -39,4 +39,15 @@
     soluciones más eficientes a las empresas. Además, debe tener una preocupación constante por el impacto ambiental y
     social de sus operaciones, promoviendo prácticas responsables y sostenibles en toda su cadena de suministro.
 </p>
+
+{% for p in propietarios %}
+    <img class="icon-user" src="{{ p.img.url }}">
+    <p>{{p.nombre}}</p>
+    <p><a href="mailto:{{p.correo}}?">{{p.correo}}</a></p>
+    <p><a href="tel:+591{{p.numTelefono}}">{{p.numTelefono}}</a></p>
+   <!--  <p>Telf: {{p.numTelefono}}</p> -->
+    <p>Cargo: {{p.cargo}}</p>
+{% empty %}
+<h2>No hay propietarios</h2>
+{% endfor %}
 {% endblock %}

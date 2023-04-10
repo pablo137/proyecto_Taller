@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import  AuthenticationForm
 from .form import EmprendedorForms, ConsumidorForms
-from .models import Emprendedor, Consumidor, Categorias
+from .models import Emprendedor, Consumidor, Categorias, Propietarios
 
 
 def home(request):
@@ -17,7 +17,9 @@ def contactanos(request):
 
 
 def acerca_nosotros(request):
-    return render(request, 'acerca_nosotros.html')
+    propietarios = Propietarios.objects.all()
+    context = { 'propietarios' : propietarios}
+    return render(request, 'acerca_nosotros.html', context)
 
 
 def registrar(request):
@@ -58,3 +60,9 @@ def perfil(request):
     context = {'listaEmp': listaEmp,
                'listaCons': listaCons,}
     return render(request, 'perfil.html', context)
+
+def condiciones(request):
+    return render(request, 'condiciones.html')
+
+def privacidad(request):
+    return render(request, 'privacidad.html')
