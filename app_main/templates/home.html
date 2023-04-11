@@ -23,7 +23,9 @@
                         <img class="categorias" src="{{ categoria.img_categoria.url }}" alt="image" class="card-img-top">
                         <div class="card-body">
                             <div class="card-title text-center">
-                                <h4>{{ categoria.nombre_categoria }}</h4>
+                                <!-- <h4>{{ categoria.nombre_categoria }}</h4> -->
+                                <a href="{% url 'buscar_por_categoria' categoria_id=categoria.id %}"><h4>{{ categoria.nombre_categoria }}</h4></a>
+
                             </div>
                         </div>
                     </div>

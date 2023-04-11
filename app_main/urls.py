@@ -15,4 +15,5 @@ urlpatterns = [
 
     path('condiciones/', views.condiciones, name='condiciones'),
     path('privacidad/', views.privacidad, name='privacidad'),
+    path('buscar_por_categoria/<int:categoria_id>/', views.buscar_por_categoria, name='buscar_por_categoria'),
 ]

@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import  AuthenticationForm
 from .form import EmprendedorForms, ConsumidorForms
-from .models import Emprendedor, Consumidor, Categorias, Propietarios
+from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
+from django.db.models import Q
 
 
 def home(request):
@@ -66,3 +67,9 @@ def condiciones(request):
 
 def privacidad(request):
     return render(request, 'privacidad.html')
+
+def buscar_por_categoria(request):
+    #query = request.GET.get('q')
+    #resultados = Producto.objects.filter(Q(nombre_producto__icontains=query))
+    resultados = Producto.objects.filter(categoria=request.GET)
+    return render(request, 'resultado_busqueda.html', {'resultados': resultados})
