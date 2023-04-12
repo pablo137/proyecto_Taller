@@ -2,9 +2,9 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import  AuthenticationForm
-from .form import EmprendedorForms, ConsumidorForms
+from .form import EmprendedorForms, ConsumidorForms, ProductoForms
 from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
-from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -28,8 +28,7 @@ def registrar(request):
         form = EmprendedorForms(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            nombre = form.cleaned_data['nombre_completo']
-            return redirect('perfil')
+            return redirect('lista_usuarios')
     else:
         form = EmprendedorForms()
     context = {'form': form}
@@ -40,8 +39,7 @@ def registrar_consumidor(request):
         form = ConsumidorForms(request.POST, request.FILES)
         # if form.is_valid():
         form.save()
-        nombre = form.cleaned_data['nombre_completo']
-        return redirect('perfil')
+        return redirect('lista_usuarios')
     else:
         form = ConsumidorForms()
     context = {'form': form}
@@ -54,13 +52,34 @@ def pagina_registro(request):
 def inicar_sesion(request):
     return render(request, 'iniciar_sesion.html',{ 'form' : AuthenticationForm})
 
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('home')
 
+@login_required
 def perfil(request):
+    productos = Producto.objects.all()
+    context = { 'productos' : productos}
+    return render(request, 'perfil.html', context)
+
+@login_required
+def crear_producto(request):
+    if request.method == 'POST':
+        form = ProductoForms(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')
+    else:
+        form = ProductoForms()
+    context = {'form': form}
+    return render(request, 'crear_producto.html', context)
+
+def lista_usuarios(request):
     listaEmp = Emprendedor.objects.all()
     listaCons = Consumidor.objects.all()
     context = {'listaEmp': listaEmp,
                'listaCons': listaCons,}
-    return render(request, 'perfil.html', context)
+    return render(request, 'lista_usuarios.html', context)
 
 def condiciones(request):
     return render(request, 'condiciones.html')

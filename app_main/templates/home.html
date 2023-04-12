@@ -2,7 +2,13 @@
 
 {% block content %}
 
-<!-- <h1> Home </h1> -->
+<h1>Home</h1>
+{% if request.user.is_authenticated %}
+<hr>
+<h4>{{ user.username | upper}}, Bienvenido a One Click</h4>
+{% else %}
+<hr>
+{% endif %}
 
 <!-- {% for categoria in listaCategorias %}
     {{categoria.nombre_categoria}}

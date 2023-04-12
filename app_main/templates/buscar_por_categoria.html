@@ -1,10 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 {% if resultados %}
 <ul>
     {% for resultado in resultados %}
     <li>{{ resultado.nombre_producto }}</li>
-    <li><img class="icon-user" src="{{ resultado.img_producto.url }}"></li>
+    <li><img class="categorias" src="{{ resultado.img_producto.url }}"></li>
     {% endfor %}
 </ul>
 {% else %}
 <p>No se encontraron resultados.</p>
 {% endif %}
+
+{% endblock %}
