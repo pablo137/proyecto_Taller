@@ -68,8 +68,8 @@ def condiciones(request):
 def privacidad(request):
     return render(request, 'privacidad.html')
 
-def buscar_por_categoria(request):
+def buscar_por_categoria(request, categoria_id):
     #query = request.GET.get('q')
     #resultados = Producto.objects.filter(Q(nombre_producto__icontains=query))
-    resultados = Producto.objects.filter(categoria=request.GET)
-    return render(request, 'resultado_busqueda.html', {'resultados': resultados})
+    resultados = Producto.objects.filter(categoria=categoria_id)
+    return render(request, 'buscar_por_categoria.html', {'resultados': resultados})
