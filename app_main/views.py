@@ -5,7 +5,7 @@ from django.contrib.auth.forms import  AuthenticationForm
 from .form import EmprendedorForms, ConsumidorForms, ProductoForms
 from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
 from django.contrib.auth.decorators import login_required
-
+from heyoo import WhatsApp
 
 def home(request):
     listaCategorias = Categorias.objects.all()
@@ -14,6 +14,22 @@ def home(request):
 
 
 def contactanos(request):
+    #TOKEN DE ACCESO DE FACEBOOK
+    token='EAACE3nKwOroBAJX4seWxuZCZCpzUSlFPx6bV8IIeZCMnMQLJTluDBMWHJjMb0YKdT3YkWgX2wZA8DSheDewACyD3xCneiaHYix8LvMDsgZArtVPbP9lP6sqXM6vDhwQFcejHTwWH0xZAhoiZBC5rZBCYT2VLelQe9y9p7XcSuDnf0CO8ZBtBzZBG8UWC4sPxj22ZBM9H0nNWoWSR372gTDdhlFd'
+    #IDENTIFICADOR DE NÚMERO DE TELÉFONO
+    idNumeroTeléfono='109787965434419'
+    #TELEFONO QUE RECIBE (EL DE NOSOTROS QUE DIMOS DE ALTA)
+    telefonoEnvia='+59164888167'
+    #MENSAJE A ENVIAR
+    textoMensaje="Hola novato saludos"
+    #URL DE LA IMAGEN A ENVIAR
+    urlImagen='https://i.imgur.com/r5lhxgn.png'
+    #INICIALIZAMOS ENVIO DE MENSAJES
+    mensajeWa=WhatsApp(token,idNumeroTeléfono)
+    #ENVIAMOS UN MENSAJE DE TEXTO
+    mensajeWa.send_message(textoMensaje,telefonoEnvia)
+    #ENVIAMOS UNA IMAGEN
+    mensajeWa.send_image(image=urlImagen,recipient_id=telefonoEnvia,)
     return render(request, 'contactanos.html')
 
 
