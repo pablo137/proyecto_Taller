@@ -16,28 +16,6 @@ def home(request):
 
 
 def contactanos(request):
-    ##################################################################
-    # client = vonage.Client(key="3a6b1505", secret="clLJALboB46d51Nt")
-    # sms = vonage.Sms(client)
-    # responseData = sms.send_message({"from": "Vonage APIs", "to": "59164888167", "text": "A text message sent using the Nexmo SMS API",})
-    # if responseData["messages"][0]["status"] == "0":
-    #     print("Message sent successfully.")
-    # else:
-    #     print(f"Message failed with error: {responseData['messages'][0]['error-text']}")
-    ###################################################################
-
-    account_sid = 'AC6b6ffc0469b49c70652ce4bb9014adb3'
-    auth_token = '291ba083612ef3021a0fc683ed0c6d5a'
-    client = Client(account_sid, auth_token)
-
-    message = client.messages.create(
-        from_='whatsapp:+14155238886',
-        body='Esto de los mensajes es interesante. Lo malo es que no tiene la marca de Oneclick. Mañana avancemos el proyecto que dices. Atte. PABLO',
-        to='whatsapp:+59177606087'
-    )
-
-    print(message.sid)
-
     return render(request, 'contactanos.html')
 
 
