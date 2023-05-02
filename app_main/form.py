@@ -1,5 +1,5 @@
 from django import forms
-from .models import Emprendedor,Consumidor, Producto
+from .models import Emprendedor,Consumidor, Producto, Contacto
 
 class EmprendedorForms(forms.ModelForm):
     nit = forms.IntegerField(label="NIT")
@@ -45,4 +45,12 @@ class ProductoForms(forms.ModelForm):
             'cantidad',
             'descuento',
             'img_producto',
+        ]
+
+class ContactoForms(forms.ModelForm):
+    mensaje = forms.CharField(label='Escribe un mensaje')
+    class Meta:
+        model = Contacto
+        fields = [
+            'mensaje'
         ]

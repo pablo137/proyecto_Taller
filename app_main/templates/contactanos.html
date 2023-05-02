@@ -2,5 +2,11 @@
 
 {% block content %}
 <h1> Contactanos: </h1>
-
+<form action="{% url 'contactanos' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>
+        Mandar
+    </button>
+</form>
 {% endblock  %}

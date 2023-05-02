@@ -54,3 +54,10 @@ class Producto(models.Model):
     img_producto = models.ImageField(upload_to="Productos/", null=True)
     def __str__(self) -> str:
         return f"{self.nombre_producto}, Categoria: {self.categoria}"
+    
+class Contacto(models.Model):
+    # codigo_postal = models.IntegerField(max_length=10)
+    # numero = models.IntegerField(max_length=20)
+    mensaje = models.CharField(max_length=200)
+    def __str__(self) -> str:
+        return self.mensaje

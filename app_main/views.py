@@ -2,7 +2,9 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-from .form import EmprendedorForms, ConsumidorForms, ProductoForms
+
+from oneClick.settings import ACCOUNT_SID_TWILIO, TOKEN_TWILIO 
+from .form import EmprendedorForms, ConsumidorForms, ProductoForms, ContactoForms
 from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
 from django.contrib.auth.decorators import login_required
 # import vonage
@@ -16,7 +18,26 @@ def home(request):
 
 
 def contactanos(request):
-    return render(request, 'contactanos.html')
+
+    if request.method == 'POST':
+        form = ContactoForms(request.POST, request.FILES)
+        if form.is_valid():
+            # account_sid = 'AC6b6ffc0469b49c70652ce4bb9014adb3'
+            account_sid = ACCOUNT_SID_TWILIO
+            # auth_token = '4fc8e454be511d81e386d4fbe5031757'
+            auth_token = TOKEN_TWILIO
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                from_='whatsapp:+14155238886',
+                body=form.cleaned_data['mensaje'],
+                to='whatsapp:+59164888167'
+            )
+            # return render(request, 'contactanos.html')
+            return redirect('contactanos')
+    else:
+        form = ContactoForms()
+    context = {'form': form}
+    return render(request, 'contactanos.html', context)
 
 
 def acerca_nosotros(request):
