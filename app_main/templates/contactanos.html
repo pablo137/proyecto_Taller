@@ -9,4 +9,19 @@
         Mandar
     </button>
 </form>
-{% endblock  %}
+<!-- MENSAJE ENMERGENTE -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% if messages %}
+{% for m in messages %}
+<script>
+    Swal.fire({
+        "title": "Tu mensaje",
+        "text": "{{m}}",
+        "icon": 'success',
+        "showConfirmButton": false,
+        "timer": 3000
+    })
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

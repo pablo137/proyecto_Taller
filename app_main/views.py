@@ -6,7 +6,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from .form import EmprendedorForms, ConsumidorForms, ProductoForms, ContactoForms
 from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
 from django.contrib.auth.decorators import login_required
-# import vonage
+from django.contrib import messages
+# import twilio
 from twilio.rest import Client
 
 
@@ -33,6 +34,7 @@ def contactanos(request):
                 body=form.cleaned_data['mensaje'],
                 to='whatsapp:+59164888167'
             )
+            messages.success(request,"Ha sido enviado correctamente")
             # return render(request, 'contactanos.html')
             return redirect('contactanos')
     else:
