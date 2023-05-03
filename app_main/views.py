@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 
-from oneClick.settings import ACCOUNT_SID_TWILIO, TOKEN_TWILIO 
+from django.conf import settings
 from .form import EmprendedorForms, ConsumidorForms, ProductoForms, ContactoForms
 from .models import Emprendedor, Consumidor, Categorias, Propietarios, Producto
 from django.contrib.auth.decorators import login_required
@@ -23,9 +23,11 @@ def contactanos(request):
         form = ContactoForms(request.POST, request.FILES)
         if form.is_valid():
             # account_sid = 'AC6b6ffc0469b49c70652ce4bb9014adb3'
-            account_sid = ACCOUNT_SID_TWILIO
+            print(settings.ACCOUNT_SID_TWILIO)
+            account_sid = settings.ACCOUNT_SID_TWILIO
             # auth_token = '4fc8e454be511d81e386d4fbe5031757'
-            auth_token = TOKEN_TWILIO
+            print(settings.TOKEN_TWILIO)
+            auth_token = settings.TOKEN_TWILIO
             client = Client(account_sid, auth_token)
             message = client.messages.create(
                 from_='whatsapp:+14155238886',
