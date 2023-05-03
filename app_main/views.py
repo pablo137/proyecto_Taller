@@ -127,3 +127,18 @@ def buscar_por_categoria(request, categoria_id):
     # resultados = Producto.objects.filter(Q(nombre_producto__icontains=query))
     resultados = Producto.objects.filter(categoria=categoria_id)
     return render(request, 'buscar_por_categoria.html', {'resultados': resultados})
+
+
+# nuevo del balsamiq
+def ofertas(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'balsamiq/ofertas.html', context)
+
+def cupones(request):
+    return render(request, 'balsamiq/cupones.html')
+
+def carrito(request):
+    productos = Producto.objects.all()
+    context = {'productos': productos}
+    return render(request, 'balsamiq/carrito.html', context)

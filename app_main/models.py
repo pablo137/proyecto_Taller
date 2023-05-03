@@ -47,7 +47,7 @@ class Propietarios(models.Model):
 class Producto(models.Model):
     nombre_producto = models.CharField(max_length=100)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE, null=True, default=None)
-    descripcion = models.TextField(max_length=200)
+    descripcion = models.TextField(max_length=500)
     precio = models.IntegerField()
     cantidad = models.IntegerField()
     descuento = models.CharField(max_length=5)

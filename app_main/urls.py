@@ -18,4 +18,10 @@ urlpatterns = [
     path('condiciones/', views.condiciones, name='condiciones'),
     path('privacidad/', views.privacidad, name='privacidad'),
     path('buscar_por_categoria/<int:categoria_id>/', views.buscar_por_categoria, name='buscar_por_categoria'),
+
+    #nuevo de balsamiq:
+    path('ofertas/', views.ofertas, name='ofertas'),
+    path('cupones/', views.cupones, name='cupones'),
+    path('carrito/', views.carrito, name='carrito'),
+
 ]

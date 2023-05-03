@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Cupones:</h1>
+<hr>
+<p>Tienes un nuevo cupon?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="cupon">Agregar cupon:</label>
+    <input type="text" name="cupon" id="" placeholder="Ingresa el codigo">
+    <button type="submit">Agregar cupon</button>
+</form>
+<hr>
+<h4>Cómo uso un cupón?</h4>
+<ul>
+    <li>Ingrese el código del cupón</li>
+    <li>Chequea las condiciones, la fecha de vencimiento, y para que locales sirve</li>
+    <li>Una vez que elegiste tu pedido, selecciona el cupón que quieres usar y listo!</li>
+</ul>
+
+{% endblock %}
