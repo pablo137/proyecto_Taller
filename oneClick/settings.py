@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # Nuevas apps:
     'app_main.apps.AppMainConfig',
     'cloudinary_storage',
+    'login.apps.LoginConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +74,7 @@ ROOT_URLCONF = 'oneClick.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
