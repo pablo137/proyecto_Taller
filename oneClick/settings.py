@@ -46,17 +46,30 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
+    # bootstrap 5
+    'crispy_forms',
+    'crispy_bootstrap5',
+
+    # dependencias de django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Nuevas apps:
-    'app_main.apps.AppMainConfig',
+
+    #nuevas apps
+    'cuenta.apps.CuentaConfig', # perfil
+    'core',
+    'contacto',
+    'producto',
+    'carrito',
     'cloudinary_storage',
-    'login.apps.LoginConfig',
 ]
+
+# Variables globales de bootstrap5
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +87,7 @@ ROOT_URLCONF = 'oneClick.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'carrito.context_processor.total_carrito',
             ],
         },
     },
@@ -90,7 +104,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'oneClick.wsgi.application'
 
 
-# Database
+# Database LOCAL
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # DATABASES = {
@@ -104,6 +118,22 @@ WSGI_APPLICATION = 'oneClick.wsgi.application'
 #     }
 # }
 
+# RENDER DATABASE
+import dj_database_url
+
+DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'db_oneclick',
+    'USER' :'postgres',
+    'PASSWORD' : '123',
+    'HOST' : 'localhost',
+    'PORT' : 5432})}
+
+# DATABASE DEFECTO
+# DATABASES = {
+
+#     'default': dj_database_url.parse(env('DATABASE_URL'))
+
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -127,9 +157,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/La_Paz'
 
 USE_I18N = True
 
@@ -152,21 +182,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# RENDER
-import dj_database_url
+# Variable de redireccion de login y logout
+LOGIN_REDIRECT_URL = 'perfil'
+LOGOUT_REDIRECT_URL = 'home'
 
-DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'db_oneclick',
-    'USER' :'postgres',
-    'PASSWORD' : '123',
-    'HOST' : 'localhost',
-    'PORT' : 5432})}
-
-# DATABASES = {
-
-#     'default': dj_database_url.parse(env('DATABASE_URL'))
-
-# }
 #CLOUDINARY
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dexh8g1vv',

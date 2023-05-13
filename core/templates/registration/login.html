@@ -1,0 +1,31 @@
+<!-- Extencion necesaria de base.html -->
+{% extends 'base.html' %}
+
+<!-- Nombre de la pagina -->
+{% block title %}
+Login
+{% endblock %}
+
+<!-- archivo de boostrap para que funcione -->
+{% load crispy_forms_tags %}
+
+<!-- Contenido de la pagina -->
+{% block content %}
+<h1>Login:</h1>
+<hr>
+<form action="." method="post">
+    {% csrf_token %}
+
+    <div class="card mx-auto" style="width: 25rem;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Ingrese sus credenciales</h5>
+            
+            {{ form | crispy }}
+
+            <a href="{% url 'home' %}" class="card-link">Inicio</a>
+            <a href="{% url 'register' %}" class="card-link">Registrarse</a>
+            <button class="btn btn-sm btn-primary float-right" type="submit">Iniciar Sesion</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
