@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 #Perfil de usuario:
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil', verbose_name='Usuario')
-    img = models.ImageField(default='users/img_defecto.jpg', upload_to='users/', verbose_name='Imagen de perfil')
+    img = models.ImageField(default='users/img_defecto_guzx7h.jpg', upload_to='users/', verbose_name='Imagen de perfil')
     bio = models.TextField(max_length=500, blank=True, null=True, verbose_name='Biografia')
     telf = models.CharField(max_length=50, blank=True, null=True, verbose_name='Telefono')
 
