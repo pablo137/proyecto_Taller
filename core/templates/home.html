@@ -1,0 +1,19 @@
+<!-- Extencion necesaria de base.html -->
+{% extends 'base.html' %}
+
+<!-- Nombre de la pagina -->
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+<!-- Contenido de la pagina -->
+{% block content %}
+<h1>{{titulo}}:</h1>
+<hr>
+
+{% if request.user.is_authenticated %}
+<h4>{{user.username | upper}}, Bienvenido</h4>
+{% endif %}
+
+<p>{{saludo}}</p>
+{% endblock %}
