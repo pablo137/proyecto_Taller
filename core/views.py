@@ -2,11 +2,20 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from .forms import CustomUserCreationForm
+from producto.models import Categorias, Productos
 
 def home(request):
-    context = {'titulo': 'Home',
-               'saludo': 'Hola desde Home'}
+    # context = {'titulo': 'Home',
+    #            'saludo': 'Hola desde Home'}
+    listaCategorias = Categorias.objects.all()
+    context = {'listaCategorias': listaCategorias}
     return render(request, 'home.html', context)
+
+def buscar_por_categoria(request, categoria_id):
+    # query = request.GET.get('q')
+    # resultados = Producto.objects.filter(Q(nombre_producto__icontains=query))
+    resultados = Productos.objects.filter(categoria=categoria_id)
+    return render(request, 'buscar_por_categoria.html', {'resultados': resultados})
 
 def cerrar_sesion(request):
     logout(request)

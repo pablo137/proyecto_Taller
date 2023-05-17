@@ -16,18 +16,17 @@
         {% for producto in datos %}
         <div class="col">
             <div class="card text-center h-100">
-                <img src="{{producto.img.url}}" class="card-img-top" alt="Error al cargar la imagen">
+                <img src="{{producto.img.url}}" class="card-img-top" alt="Error al cargar la imagen" height="280px">
                 <div class="card-body">
                     <h5 class="card-title">{{producto.nombre | upper }}</h5>
-                    <p class="card-text float-left"><strong>Propietario: </strong>{{producto.user.username}}</p>
-                    <p class="card-text float-left"><strong>Categoria: </strong>{{producto.categoria}}</p>
-                    <p class="card-text float-left"><strong>Descripcion: </strong>{{producto.descripcion}}</p>
-                    <p class="card-text float-left"><strong>Precio: </strong>{{producto.precio}} Bs.</p>
-
+                    <p class="card-text"><strong>Propietario: </strong>{{producto.user.username}}</p>
+                    <p class="card-text"><strong>Categoria: </strong>{{producto.categoria}}</p>
+                    <p class="card-text"><strong>Descripcion: </strong>{{producto.descripcion}}</p>
+                    <p class="card-text"><strong>Precio: </strong>{{producto.precio}} Bs.</p>
                     {% if producto.stock %}
-                    <p class="card-text float-left"><strong>Estado: </strong>Disponible</p>
+                    <p class="card-text"><strong>Estado: </strong>Disponible</p>
                     {% else %}
-                    <p class="card-text float-left"><strong>Estado: </strong>Agotado</p>
+                    <p class="card-text"><strong>Estado: </strong>Agotado</p>
                     {% endif%}
 
                     {% for group in request.user.groups.all %}
