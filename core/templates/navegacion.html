@@ -15,6 +15,10 @@
                     <a class="nav-link" href="{% url 'productos' %}">Productos</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}">Contactanos</a>
+                </li>
+
                 {% for group in request.user.groups.all %}
                 {% if group.name == 'Consumidor' %}
                 <li class="nav-item">
