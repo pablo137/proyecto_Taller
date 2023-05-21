@@ -20,7 +20,7 @@ class Productos(models.Model):
     img = models.ImageField(default='productos/img_defecto_cpzv2f.jpg', upload_to='productos/', verbose_name='Imagen de producto')
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE, verbose_name='Categorias', null=True, blank=True)
     descripcion = models.TextField(max_length=500, null=True)
-    precio = models.DecimalField(max_digits=7, decimal_places=2)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.BooleanField(default=True)
 
     class Meta:
