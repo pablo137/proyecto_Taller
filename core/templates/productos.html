@@ -1,6 +1,5 @@
 <!-- Extencion necesaria de base.html -->
 {% extends 'base.html' %}
-
 <!-- Nombre de la pagina -->
 {% block title %}
 {{titulo}}
@@ -11,13 +10,14 @@
 <h1>{{titulo}}:</h1>
 <hr>
 
-<div class="container">
+<!-- <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for producto in datos %}
         <div class="col">
-            <div class="card text-center h-100">
-                <img src="{{producto.img.url}}" class="card-img-top" alt="Error al cargar la imagen" height="280px">
-                <div class="card-body">
+            <div class="card h-100">
+                <img src="{{producto.img.url}}" class="card-img-top" alt="Error al cargar la imagen" height="400px"
+                    style="object-fit:scale-down">
+                <div class="card-body position-relative m-4">
                     <h5 class="card-title">{{producto.nombre | upper }}</h5>
                     <p class="card-text"><strong>Propietario: </strong>{{producto.user.username}}</p>
                     <p class="card-text"><strong>Categoria: </strong>{{producto.categoria}}</p>
@@ -31,14 +31,50 @@
 
                     {% for group in request.user.groups.all %}
                     {% if group.name == 'Consumidor' %}
-                    <a href="{% url 'carrito'  %}" class="btn btn-primary">Agregar carrito</a>
+                    <a href="{% url 'carrito'  %}" class="btn btn-primary position-absolute bottom-0 end-0 mt-3">Agregar
+                        carrito</a>
                     {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
         {% empty %}
-            <p>No hay productos disponibles :3</p>
+        <p>No hay productos disponibles :3</p>
+        {% endfor %}
+    </div>
+</div> -->
+
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+        {% for producto in datos %}
+        <div class="col">
+            <div class="card card-tmp h-100 shadow-sm"> <img src="{{producto.img.url}}" class="card-img-top-1" height="400px" alt="...">
+                <a class="label-top shadow-sm" href="#">AÑADIR</a>
+                <div class="card-body">
+                    <div class="clearfix mb-3">
+                        {% if producto.stock %}
+                        <span class="float-start badge rounded-pill" style="background-color:green;">Disponible</span>
+                        {% else %}
+                        <span class="float-start badge rounded-pill bg-danger">Agotado</span>
+                        {% endif%}
+                        <span class="float-end price-hp">{{producto.precio}} Bs.</span>
+                    </div>
+                    <h5 class="card-title">
+                        {{producto.nombre | upper }}
+                        <br>
+                        Descripcion: {{producto.descripcion}}
+                        <br>
+                        Propietario: {{producto.user.username}}
+                        <br>
+                        Categoria: {{producto.categoria}}
+                        
+                    </h5>
+                    <div class="text-center my-4"> <a href="#" class="btn btn-info">Ver más</a> </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay productos disponibles :3</p>
         {% endfor %}
     </div>
 </div>
