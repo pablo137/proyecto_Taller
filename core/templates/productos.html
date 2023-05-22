@@ -47,12 +47,17 @@
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
         {% for producto in datos %}
         <div class="col">
-            <div class="card card-tmp h-100 shadow-sm"> <img src="{{producto.img.url}}" class="card-img-top-1" height="400px" alt="...">
-                <a class="label-top shadow-sm" href="#">AÑADIR</a>
+            <div class="card card-tmp h-100 shadow-sm"> <img src="{{producto.img.url}}" class="card-img-top-1"
+                    height="400px" alt="...">
+                <a title="Añadir al carrito" data-toggle="tooltip" data-placement="top"
+                    class="label-top shadow-sm btn-primary" href="#"><span class="material-symbols-outlined">
+                        add_shopping_cart
+                    </span></a>
+
                 <div class="card-body">
                     <div class="clearfix mb-3">
                         {% if producto.stock %}
-                        <span class="float-start badge rounded-pill" style="background-color:green;">Disponible</span>
+                        <span class="float-start badge rounded-pill bg-success">Disponible</span>
                         {% else %}
                         <span class="float-start badge rounded-pill bg-danger">Agotado</span>
                         {% endif%}
@@ -77,5 +82,4 @@
         {% endfor %}
     </div>
 </div>
-
 {% endblock %}
