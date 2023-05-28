@@ -5,8 +5,8 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     user = models.OneToOneField(Customer, on_delete=models.CASCADE)
-    img = models.ImageField(default='uploads/users/img_defecto_u_ruk6ou.jpg',upload_to='uploads/users/', verbose_name='imagen de perfil')
-    bio = models.TextField(blank=True)
+    img = models.ImageField(default='uploads/users/img_defecto_u_ruk6ou.jpg',upload_to='uploads/users/', verbose_name='Imagen de perfil')
+    bio = models.TextField(blank=True, verbose_name='Biografia')
 
     class Meta:
         verbose_name = 'Perfil'

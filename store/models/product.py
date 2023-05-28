@@ -1,8 +1,10 @@
 from django.db import models
 from .category import Category
+from .customer import Customer
 
 
 class Product(models.Model):
+    # user = models.ForeignKey(Customer, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
