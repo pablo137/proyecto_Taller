@@ -59,11 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #nuevas apps
-    'cuenta.apps.CuentaConfig', # perfil
-    'core',
-    'contacto',
-    'producto',
-    'carrito',
+    'store',
     'cloudinary_storage',
 ]
 
@@ -95,7 +91,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'carrito.context_processor.total_carrito',
             ],
         },
     },
@@ -118,15 +113,24 @@ WSGI_APPLICATION = 'oneClick.wsgi.application'
 #     }
 # }
 
-# RENDER DATABASE
-import dj_database_url
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'db_oneclick',
-    'USER' :'postgres',
-    'PASSWORD' : '123',
-    'HOST' : 'localhost',
-    'PORT' : 5432})}
+############################ RENDER DATABASE
+
+# import dj_database_url
+# DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'db_oneclick',
+#     'USER' :'postgres',
+#     'PASSWORD' : '123',
+#     'HOST' : 'localhost',
+#     'PORT' : 5432})}
+
+########################### END RENDER DATABASE
 
 # DATABASE DEFECTO
 # DATABASES = {

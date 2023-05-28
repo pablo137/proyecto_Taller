@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% block title %} Home {% endblock %} 
+
+
+{% block content %}
+<h1>Home</h1>
+<hr />
+{% if request.session.customer %}
+<h4>Bienvenido a <strong>One click</strong></h4>
+{% endif %}
+
+<div class="container-fluid my-5">
+  <h1 class="text-center fw-bold display-1 mb-5">
+    <span class="text-primary">CATEGORIAS</span>
+  </h1>
+  <div class="row">
+    <div class="col-12 m-auto">
+      <div class="owl-carousel owl-theme">
+        {% for categoria in categorias %}
+
+        <div class="item mb-4">
+          <div class="card border-0 shadow">
+            <img
+              src="{{ categoria.image.url }}"
+              alt="image"
+              class="card-img-top"
+              height="280px"
+            />
+            <div class="card-body">
+              <div class="card-title text-center">
+                <!-- <h4>{{ categoria.nombre_categoria }}</h4> -->
+                <a href="/?category={{categoria.id}}"><h4>{{ categoria.name }}</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <h2>No hay Categorias</h2>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid my-5 fw-bold">
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li class="me-4">
+            <a class="btn btn-light border-dark" href="{% url 'condiciones' %}">Condiciones de uso</a>
+        </li>
+        <li>
+            <a class="btn btn-light border-dark" href="{% url 'privacidad' %}">Aviso de privacidad</a>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}
