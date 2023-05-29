@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Crear producto {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Crear Producto</h1>
+<hr>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit">Crear producto</button>
+</form>
+{% endblock %}

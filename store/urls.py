@@ -7,6 +7,7 @@ from .views.cart import Cart
 from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .views.perfil import view_profile, edit_profile
+from .views.producto import crear_producto, ver_productos, editar_producto, eliminar_producto
 from .middlewares.auth import auth_middleware
 
 
@@ -23,6 +24,11 @@ urlpatterns = [
 
     path('perfil/', auth_middleware(view_profile), name='perfil'),
     path('perfil/edit/', auth_middleware(edit_profile), name='edit_perfil'),
+
+    path('ver_producto/', auth_middleware(ver_productos), name='ver_productos'),
+    path('crear_producto/', auth_middleware(crear_producto), name='crear_producto'),
+    path('editar_producto/<int:producto_id>/', auth_middleware(editar_producto), name='editar_producto'),
+    path('eliminar_producto/<int:producto_id>/', auth_middleware(eliminar_producto), name='eliminar_producto'),
 
     path('logout', logout, name='logout'),
     path('cart', auth_middleware(Cart.as_view()), name='cart'),
