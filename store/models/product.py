@@ -4,13 +4,13 @@ from .customer import Customer
 
 
 class Product(models.Model):
-    # user = models.ForeignKey(Customer, on_delete=models.CASCADE, default=1)
-    name = models.CharField(max_length=50)
-    price = models.IntegerField(default=0)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.CharField(max_length=200, default='' , null=True , blank=True)
-    image = models.ImageField(default='uploads/products/img_defecto_p_fugbfc.jpg',upload_to='uploads/products/')
-    stock = models.BooleanField(default=True)
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=50, verbose_name='Nombre de producto')
+    price = models.IntegerField(default=0, verbose_name='Precio')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1, verbose_name='Categoria')
+    description = models.TextField(max_length=200, default='' , null=True , blank=True, verbose_name='Descripcion')
+    image = models.ImageField(default='uploads/products/img_defecto_p_fugbfc.jpg',upload_to='media/uploads/products/', verbose_name='Imagen de producto')
+    stock = models.BooleanField(default=True, verbose_name='Estado')
 
     @staticmethod
     def get_products_by_id(ids):

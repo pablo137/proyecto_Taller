@@ -1,0 +1,6 @@
+<!-- eliminar_producto.html -->
+<p>¿Estás seguro de que deseas eliminar el producto "{{ producto.nombre }}"?</p>
+<form id="form-eliminacion" method="post" action="{% url 'eliminar_producto' producto.id %}">
+  {% csrf_token %}
+  <input type="submit" value="Eliminar">
+</form>
