@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
 
 :root {
     --brand: #ff4d29;
@@ -31,10 +39,6 @@ h1,h2,h3,h4,h5,h6,
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-img {
-    width: 100%;
 }
 
 a {
@@ -491,3 +495,163 @@ input.form-control {
     box-shadow: none;
     border-color: var(--dark);
 }
+
+/* CARRITO */
+
+.contenedor {
+  position:relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 95%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background: #FFF !important;
+  margin: 0 auto;
+}
+
+.contenedor .card {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.contenedor .card:hover {
+  -webkit-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+  -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8);
+}
+
+.contenedor .card .img-box {
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.contenedor .card:hover .img-box {
+  opacity: 0.5;
+}
+
+.contenedor .card .img-box img {
+  width: 100%;
+  margin-bottom: 0px;
+  height: 100%;
+}
+
+.contenedor .card .content {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  bottom: -100%;
+  padding: 20px;
+  padding-top: 60px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.contenedor .card:hover .content {
+  bottom: 0;
+}
+
+/*Aca estan los hermanos... Importante cambiar si solo se quiere 1*/
+
+.contenedor .card:nth-child(1) .content {
+  background: -webkit-gradient(linear, left bottom, left top, from(#0075F2), to(transparent));
+  background: -webkit-linear-gradient(bottom, #0075F2, transparent);
+  background: -o-linear-gradient(bottom, #0075F2, transparent);
+  background: linear-gradient(0deg, #0075F2, transparent);
+}
+
+.contenedor .card:nth-child(2) .content {
+  background: -webkit-gradient(linear, left bottom, left top, from(#30F200), to(transparent));
+  background: -webkit-linear-gradient(bottom, #30F200, transparent);
+  background: -o-linear-gradient(bottom, #30F200, transparent);
+  background: linear-gradient(0deg, #30F200, transparent);
+}
+
+.contenedor .card:nth-child(3) .content {
+  background: -webkit-gradient(linear, left bottom, left top, from(#EE00F2), to(transparent));
+  background: -webkit-linear-gradient(bottom, #EE00F2, transparent);
+  background: -o-linear-gradient(bottom, #EE00F2, transparent);
+  background: linear-gradient(0deg, #EE00F2, transparent);
+}
+
+.contenedor .card .content h2 {
+  margin: 0 0 10px;
+  padding: 0;
+  color: #fff;
+  font-size: 20px;
+}
+
+.contenedor .card .content h2 span {
+  color: #ffeb3b;
+  font-size: 15px;
+}
+
+.contenedor .card .content p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+.contenedor .card .content ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0 0;
+  padding: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.contenedor .card .content ul li {
+  list-style: none;
+}
+
+.contenedor .card .content ul li a {
+  color: #fff;
+  padding: 0 10px;
+  font-size: 18px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+

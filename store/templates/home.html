@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
+<h3>Inicio</h3>
 <hr />
-<h1>Home</h1>
 {% if request.session.customer %}
 <h4>Bienvenido a <strong>One click</strong></h4>
 {% endif %}

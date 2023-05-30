@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from store.forms.perfilForms import ContactoForms
+from store.forms.perfilForms import ContactoForms, Contacto_w_Forms
 from django.core.mail import EmailMessage
+from django.contrib import messages
+from twilio.rest import Client
 
 def contacto(request):
     # print('Tipo de petición: {}'.format(request.method))
@@ -34,3 +36,28 @@ def contacto(request):
                 return redirect(reverse('contacto')+'?error')
 
     return render(request, 'contacto.html', {'form':contact_form}) 
+
+def contactanos(request):
+
+    if request.method == 'POST':
+        form = Contacto_w_Forms(request.POST, request.FILES)
+        if form.is_valid():
+            # account_sid = 'AC6b6ffc0469b49c70652ce4bb9014adb3'
+            account_sid = 'AC6b6ffc0469b49c70652ce4bb9014adb3'
+            # print(settings.ACCOUNT_SID_TWILIO)
+            # auth_token = '4fc8e454be511d81e386d4fbe5031757'
+            auth_token = 'f33ade014c543cc32b2a5351d07488c3'
+            # print(settings.TOKEN_TWILIO)
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                from_='whatsapp:+14155238886',
+                body=form.cleaned_data['mensaje'],
+                to='whatsapp:+59164888167'
+            )
+            messages.success(request,"Ha sido enviado correctamente")
+            # return render(request, 'contactanos.html')
+            return redirect('contactanos')
+    else:
+        form = Contacto_w_Forms()
+    context = {'form': form}
+    return render(request, 'contactanos.html', context)

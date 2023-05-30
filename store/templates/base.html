@@ -45,7 +45,6 @@
       font-weight: 200;
       font-size: 30px;
     }
-
   </style>
 </head>
 
@@ -55,14 +54,13 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="col-auto">
-          <p> <i class='bx bxs-envelope'></i> p481026110@gmail.com</p>
-          <p> <i class='bx bxs-phone-call'></i> (+591 6488842)</p>
+          <a class="btn text-light" href="/contacto"><i class='bx bxs-envelope'></i><i class='bx bxs-phone-call'></i> Contactanos</a>
         </div>
-        <div class="col-auto social-icons">
-          <a href="#"><i class='bx bxl-facebook'></i></a>
-          <a href="#"><i class='bx bxl-twitter'></i></a>
-          <a href="#"><i class='bx bxl-instagram'></i></a>
-          <a href="#"><i class='bx bxl-pinterest'></i></a>
+        <div class="mt-1 col-auto social-icons">
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-facebook'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-twitter'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-instagram'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-pinterest'></i></a>
         </div>
       </div>
     </div>
@@ -71,7 +69,9 @@
   <!-- MAIN -->
   <div class="container">
     <nav class="one-edge-shadow sticky-top navbar navbar-expand-lg navbar-light bg-white">
-      <a class="navbar-brand" href="{% url 'home' %}"><h2>ONE CLICK</h2></a>
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="https://res.cloudinary.com/dexh8g1vv/image/upload/v1685435213/media/Propietarios/7da5aa2a9a3640ef87cb178906b9fasfsdf2f2e_lhmpig.png">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -80,13 +80,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item btn btn-light">
-            <a class="nav-link" href="/store">Productos <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item btn btn-light">
-            <a class="nav-link" href="/contacto">Contactos <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="/store">Productos <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item btn btn-light">
-            <a class="nav-link" href="/acerca_de">Acerca de <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="/acerca_de">Acerca de <span class="sr-only">(current)</span></a>
           </li>
         </ul>
 
@@ -109,10 +109,10 @@
           {% else %}
 
           <li class="nav-link btn btn-light">
-            <a class="nav-link" href="/signup">Registrarse<span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="/signup">Registrarse<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-link btn btn-light">
-            <a class="nav-link" href="/login">Iniciar sesion<span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="/login">Iniciar sesion<span class="sr-only">(current)</span></a>
           </li>
           {% endif %}
         </ul>
@@ -123,48 +123,44 @@
   </div>
 
   <!-- footer -->
-  <footer class="bg-cover">
+  <footer class="bg-cover mt-5">
     <div class="footer-top">
-        <div class="container">
-            <div class="row gy-5">
-                <div class="col-lg-4">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit architecto unde
-                        magnam.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="ri-facebook-circle-fill"></i></a>
-                        <a href="#"><i class="ri-instagram-fill"></i></a>
-                        <a href="#"><i class="ri-youtube-fill"></i></a>
-                        <a href="#"><i class="ri-google-play-fill"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 ms-auto">
-                    <h6 class="text-white mb-4">CONTACT</h6>
-                    <p class="mb-1">P:(03) 9283 4726</p>
-                    <p class="mb-1">E:enquiries@mill.co</p>
-                    <p class="mb-0">A: 14 Paramore Street Mornington Peninsula Victoria 3552</p>
-                </div>
-                <div class="col-lg-3">
-                    <h6 class="text-white mb-4">OPENING HOURS</h6>
-                    <p class="mb-1">PMonday-Friday : 08:00 - 22:00</p>
-                    <p>aturday-Sunday : 08:00 - 22:00</p>
-                </div>
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-4">
+            <p>Nuestras redes sociales a tu alcance.</p>
+            <div class="mt-1 col-auto social-icons">
+              <a style="text-decoration:none;" href="#"><i class='bx bxl-facebook'></i></a>
+              <a style="text-decoration:none;" href="#"><i class='bx bxl-twitter'></i></a>
+              <a style="text-decoration:none;" href="#"><i class='bx bxl-instagram'></i></a>
+              <a style="text-decoration:none;" href="#"><i class='bx bxl-pinterest'></i></a>
             </div>
+          </div>
+          <div class="col-lg-3 ms-auto">
+            <h6 class="text-white mb-4">¡CONTACTATE!</h6>
+            <p class="mb-1">Celular : (591) 648 8842</p>
+            <p class="mb-1">oneclick@enterprice.org</p>
+          </div>
+          <div class="col-lg-3">
+            <h6 class="text-white mb-4">HORARIOS DE ATENCION AL CLIENTE</h6>
+            <p class="mb-1">Lunes-Viernes : 08:00 - 16:00</p>
+          </div>
         </div>
+      </div>
     </div>
     <div class="footer-bottom">
-        <div class="container">
-            <div class="row gy-3 justify-content-between">
-                <div class="col-auto">
-                    <p class="mb-0">Copyrights@2023 Todos los derechos reservados.</p>
-                </div>
-                <div class="col-auto">
-                    <p class="mb-0">Designed By <a
-                            href="https://www.youtube.com/c/SA7MAN">Salman</a></p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row gy-3 justify-content-between">
+          <div class="col-auto">
+            <p class="mb-0">Copyrights@2023 Todos los derechos reservados.</p>
+          </div>
+          <div class="col-auto">
+            <p class="mb-0">Desarrollado por <a href="#">Dream Team</a></p>
+          </div>
         </div>
+      </div>
     </div>
-</footer>
+  </footer>
   <!-- navbar -->
 
   <!-- Optional JavaScript -->
@@ -180,10 +176,10 @@
     crossorigin="anonymous"></script>
 
   <script src="{% static 'js/jquery.min.js' %}"></script>
-  
+
   <script src="{% static 'js/owl.carousel.min.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
-  
+
 </body>
 
 </html>

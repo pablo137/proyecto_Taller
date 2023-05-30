@@ -8,7 +8,7 @@ from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .views.perfil import view_profile, edit_profile
 from .views.producto import crear_producto, ver_productos, editar_producto, eliminar_producto
-from .views.contacto import contacto
+from .views.contacto import contacto, contactanos
 from .middlewares.auth import auth_middleware
 
 
@@ -20,6 +20,7 @@ urlpatterns = [
 
     path('store', store, name='store'),
     path('contacto', contacto, name='contacto'),
+    path('contactanos', contactanos, name='contactanos'),
     path('acerca_de', acerca_de, name='acerca_de'),
 
     path('signup', Signup.as_view(), name='signup'),

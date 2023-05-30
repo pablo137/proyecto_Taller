@@ -29,6 +29,9 @@ class ProductoForm(forms.ModelForm):
         ]
 
 class ContactoForms(forms.Form):
-    nombre = forms.CharField(label='Su nombre y apellido', required=True, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Introduzca sus datos'}))
-    correo = forms.EmailField(label='Correo Electrónico', required=True, widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Introduzca su correo'}))
+    nombre = forms.CharField(label='Su nombre y apellido', required=True, widget=forms.TextInput(attrs={'class':'form-control border', 'placeholder':'Introduzca sus datos'}))
+    correo = forms.EmailField(label='Correo Electrónico', required=True, widget=forms.EmailInput(attrs={'class':'form-control border', 'placeholder':'Introduzca su correo'}))
     mensaje = forms.CharField(label='Mensaje', required=True, widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Escriba aquí su mensaje...','rows':5}))
+
+class Contacto_w_Forms(forms.Form):    
+    mensaje = forms.CharField(label='Mensaje', required=True, widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Escribe alguna sugerencia o reclamo sobre la página...','rows':5}))

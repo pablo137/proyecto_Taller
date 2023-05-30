@@ -1,19 +1,69 @@
 {% extends 'base.html' %}
 {% block title %} Perfil {% endblock %}
 
-
 {% block content %}
+
 <h1>Perfil:</h1>
 <hr>
 
-<img src="{{profile.img.url}}" alt="Imagen del perfil">
-<p>Nombre de usuario: {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
-<p>Correo electrónico: {{ profile.user.email }}</p>
-<p>Bio: {{ profile.bio }}</p>
 
-<a href="{% url 'edit_perfil' %}">Editar perfil</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <img src="{{profile.img.url}}" alt="" class="float-left rounded-circle mr-5" style="width: 300px;">
+            <br>
+            <h5>Nombre de usuario: {{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+            <br>
+            <h5>Correo electrónico: {{ profile.user.email }}</h5>
+            <br>
+            <h5>Bio: </h5>
+            <p>{{ profile.bio }}</p>
+            <a class="btn btn-info me-3" href="{% url 'edit_perfil' %}">Editar perfil</a>
+            <a class="btn btn-info me-3" href="{% url 'ver_productos' %}">Ver tus productos</a>
+            <a class="btn btn-info me-3" href="{% url 'crear_producto' %}">Crear producto</a>
 
-<a href="{% url 'ver_productos' %}">Ver tus producto</a>
-<a href="{% url 'crear_producto' %}">Crear producto</a>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+    <h4 id="scrollspyHeading1">First heading</h4>
+    <p></p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
+        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
+        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
+    <h4 id="scrollspyHeading2">Second heading</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
+        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
+        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
+        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
+        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
+    <h4 id="scrollspyHeading3">Third heading</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
+        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
+        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
+        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
+        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
+    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
+    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
+    <h4 id="scrollspyHeading4">Fourth heading</h4>
+    <p>...</p>
+    <h4 id="scrollspyHeading5">Fifth heading</h4>
+    <p>...</p>
+</div> -->
 
 {% endblock %}
