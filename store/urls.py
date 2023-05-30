@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views.home import Index, store, home, condiciones_uso, privacidad
+from .views.home import Index, store, home, condiciones_uso, privacidad, acerca_de
 from .views.signup import Signup
 from .views.login import Login, logout
 from .views.cart import Cart
@@ -8,6 +8,7 @@ from .views.checkout import CheckOut
 from .views.orders import OrderView
 from .views.perfil import view_profile, edit_profile
 from .views.producto import crear_producto, ver_productos, editar_producto, eliminar_producto
+from .views.contacto import contacto
 from .middlewares.auth import auth_middleware
 
 
@@ -18,6 +19,8 @@ urlpatterns = [
     path('privacidad', privacidad, name='privacidad'),
 
     path('store', store, name='store'),
+    path('contacto', contacto, name='contacto'),
+    path('acerca_de', acerca_de, name='acerca_de'),
 
     path('signup', Signup.as_view(), name='signup'),
     path('login', Login.as_view(), name='login'),

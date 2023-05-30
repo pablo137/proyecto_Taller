@@ -22,15 +22,13 @@ def crear_producto(request):
     user = Customer.objects.get(id=user_id)
 
     if request.method == 'POST':
-        if request.user.is_authenticated:
-            form = ProductoForm(request.POST)
-            if form.is_valid():
-                producto = form.save(commit=False)
-                producto.user = user
-                producto.save()
-                return redirect('perfil')
-        else:
-            return redirect('login')
+        
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            producto = form.save(commit=False)
+            producto.user = user
+            producto.save()
+            return redirect('perfil')
     else:
         form = ProductoForm()
     return render(request,'producto/crear_producto.html', {'form': form})

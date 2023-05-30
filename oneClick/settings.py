@@ -200,3 +200,9 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'G06U-ir4m2SY0B_aqnKjRVe_owc'
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Configuracion de correo electronico
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '523a1a06ac16bd'
+EMAIL_HOST_PASSWORD = '6b3b31c114347d'
+EMAIL_PORT = '2525'
