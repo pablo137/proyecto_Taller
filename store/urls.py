@@ -29,7 +29,7 @@ urlpatterns = [
     path('perfil/', auth_middleware(view_profile), name='perfil'),
     path('perfil/edit/', auth_middleware(edit_profile), name='edit_perfil'),
 
-    path('ver_producto/', ver_productos, name='ver_productos'),
+    path('ver_productos/', ver_productos, name='ver_productos'),
     path('crear_producto/', crear_producto, name='crear_producto'),
     path('editar_producto/<int:producto_id>/', editar_producto, name='editar_producto'),
     path('eliminar_producto/<int:producto_id>/', eliminar_producto, name='eliminar_producto'),

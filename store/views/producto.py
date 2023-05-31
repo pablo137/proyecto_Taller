@@ -38,7 +38,7 @@ def crear_producto(request):
             return redirect('perfil')
     else:
         form = ProductoForm()
-    return render(request,'producto/crear_producto.html', {'form': form})
+    return render(request,'producto/crear_producto.html', {'form': form,'user':user})
 
 
 def editar_producto(request, producto_id):
@@ -55,7 +55,7 @@ def editar_producto(request, producto_id):
     else:
         form = ProductoForm(instance=producto)
     
-    return render(request, 'producto/editar_producto.html', {'form': form, 'producto': producto})
+    return render(request, 'producto/editar_producto.html', {'form': form, 'producto': producto,'user':user})
 
 def eliminar_producto(request, producto_id):
     user_id = request.session.get("customer")
@@ -67,4 +67,4 @@ def eliminar_producto(request, producto_id):
         producto.delete()
         return redirect('ver_productos')
     
-    return render(request, 'producto/eliminar_producto.html', {'producto': producto})
+    return render(request, 'producto/eliminar_producto.html', {'producto': producto,'user':user})
