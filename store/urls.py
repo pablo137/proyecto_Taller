@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path
 from .views.home import Index, store, home, condiciones_uso, privacidad, acerca_de
 from .views.signup import Signup
@@ -9,6 +8,7 @@ from .views.orders import OrderView
 from .views.perfil import view_profile, edit_profile
 from .views.producto import crear_producto, ver_productos, editar_producto, eliminar_producto
 from .views.contacto import contacto, contactanos
+from .views.tabla import get_chart
 from .middlewares.auth import auth_middleware
 
 
@@ -38,4 +38,6 @@ urlpatterns = [
     path('cart', auth_middleware(Cart.as_view()), name='cart'),
     path('check-out', CheckOut.as_view(), name='checkout'),
     path('orders', auth_middleware(OrderView.as_view()), name='orders'),
+
+    path('tabla/', get_chart, name='tabla')
 ]
