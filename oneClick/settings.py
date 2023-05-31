@@ -113,22 +113,22 @@ WSGI_APPLICATION = 'oneClick.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 ############################ RENDER DATABASE
 
-# import dj_database_url
-# DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'db_oneclick',
-#     'USER' :'postgres',
-#     'PASSWORD' : '123',
-#     'HOST' : 'localhost',
-#     'PORT' : 5432})}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default='postgres://USER:PASSWORD@HOST:PORT/NAME', conn_max_age=600 , test_options={'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'db_oneclick',
+    'USER' :'postgres',
+    'PASSWORD' : '123',
+    'HOST' : 'localhost',
+    'PORT' : 5432})}
 
 ########################### END RENDER DATABASE
 
