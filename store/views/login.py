@@ -25,7 +25,7 @@ class Login(View):
                     return HttpResponseRedirect(Login.return_url)
                 else:
                     Login.return_url = None
-                    return redirect('homepage')
+                    return redirect('home')
             else:
                 error_message = 'Email or Password invalid !!'
         else:
