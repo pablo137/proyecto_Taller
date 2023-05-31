@@ -8,24 +8,104 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <img src="{{profile.img.url}}" alt="" class="float-left rounded-circle mr-5" style="width: 300px;">
+    <div class="card row">
+        <div class="col-12 mt-5 mb-5 ms-3">
+            <img src="{{profile.img.url}}" alt="" class="float-left mr-5" style="width: 300px;">
             <br>
-            <h5>Nombre de usuario: {{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+            <h5><strong>Nombre de usuario:</strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
             <br>
-            <h5>Correo electrónico: {{ profile.user.email }}</h5>
+            <h5><strong>Correo electrónico:</strong> {{ profile.user.email }}</h5>
             <br>
-            <h5>Bio: </h5>
+            <h5><strong>Bio:</strong> </h5>
             <p>{{ profile.bio }}</p>
-            <a class="btn btn-info me-3" href="{% url 'edit_perfil' %}">Editar perfil</a>
-            <a class="btn btn-info me-3" href="{% url 'ver_productos' %}">Ver tus productos</a>
-            <a class="btn btn-info me-3" href="{% url 'crear_producto' %}">Crear producto</a>
-
-
+            <div class="position-absolute-bottom">
+                <a class="btn btn-info me-3" href="{% url 'edit_perfil' %}">Editar perfil</a>
+                <a class="btn btn-info me-3" href="{% url 'ver_productos' %}">Ver tus productos</a>
+                {% if profile.user.rol == 'cliente' %}
+                <p>Eres consumidor no puedes crear productos</p>
+                {% else %}
+                <a class="btn btn-info me-3" href="{% url 'crear_producto' %}">Crear producto</a>
+                <p>Eres un emprendedor puedes crear productos</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">John Smith</h5>
+                        <p class="text-muted mb-1">Full Stack Developer</p>
+                        <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-primary">Editar Perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">TU INFORMACION</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Nombres</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.first_name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Apellidos</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.last_name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Correo</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Biografia</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">profile.bio</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-primary">Mis productos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <!-- <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">

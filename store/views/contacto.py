@@ -23,7 +23,7 @@ def contacto(request):
                 'Mensaje de contacto recibido',
                 'Mensaje enviado por {} <{}>:\n\n{}'.format(name,email,message),
                 email,
-                ['523a1a06ac16bd@inbox.mailtrap.io'],
+                ['523a1a06ac16bd@inbox.mailtrap.io','dahofcmmejia@gmail.com'],
                 reply_to=[email],
             )
             

@@ -10,7 +10,11 @@ def view_profile(request):
     user_id = request.session.get("customer")
     user = Customer.objects.get(id=user_id)
     profile = UserProfile.objects.get(user=user)
-    return render(request, "perfil.html", {"profile": profile})
+    context = {
+        "profile": profile,
+        "user" : user,
+    }
+    return render(request, "perfil.html", context)
 
 
 # @login_required

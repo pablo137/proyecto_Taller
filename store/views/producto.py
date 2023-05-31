@@ -11,10 +11,17 @@ def ver_productos(request):
     productos = Product.objects.filter(user=user)
     
     if productos.exists():
-        return render(request, 'producto/ver_productos.html', {'productos': productos})
+
+        return render(request, 'producto/ver_productos.html', {
+            'productos': productos,
+            'user':user,
+            })
     else:
         mensaje = "No tienes productos actualmente."
-        return render(request, 'producto/ver_productos.html', {'mensaje': mensaje})
+        return render(request, 'producto/ver_productos.html', {
+            'mensaje': mensaje,
+            'user':user,
+            })
 
 
 def crear_producto(request):

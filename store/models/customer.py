@@ -1,12 +1,20 @@
 from django.db import  models
 from django.core.validators import MinLengthValidator
 
+
 class Customer(models.Model):
     first_name = models.CharField(max_length=50, verbose_name='Nombre')
     last_name = models.CharField(max_length=50, verbose_name='Apellidos')
     phone = models.CharField(max_length=15, verbose_name='Telefono')
     email = models.EmailField(verbose_name='Correo')
     password = models.CharField(max_length=500, verbose_name='Password')
+    ROL_CHOICES = (
+        ('cliente', 'Cliente'),
+        ('emprendedor', 'Emprendedor'),
+        ('todoenuno', 'TodoEnUno'),
+    )
+    rol = models.CharField(max_length=20, choices=ROL_CHOICES, default='cliente')
+
 
     class Meta:
         verbose_name = "Usuario"

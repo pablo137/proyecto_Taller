@@ -9,6 +9,11 @@
 
 <h1>Mis productos:</h1>
 <hr>
+
+{% if user.rol == "cliente" %}
+<h2>Acceso denegado!!! Usted esta en el rol de cliente</h2>
+<hr>
+{% else %}
 {% if productos %}
 <!-- Mostrar los productos -->
 
@@ -44,8 +49,7 @@
 <!-- Mostrar el mensaje -->
 <p>{{ mensaje }}</p>
 {% endif %}
-
-<div id="formulario-edicion"></div>
+{% endif %}
 
 <!-- <script src="{% static 'js/mi_script.js' %}"></script> -->
 
