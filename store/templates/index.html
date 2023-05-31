@@ -30,11 +30,19 @@
 				<div class="card mx-auto mb-3" id="{{product.id}}" style="width: 18rem">
 					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" />
 					<div class="card-body">
-						<p class="card-title">{{product.name}}</p>
-						<p class="card-text"><b>{{product.price|currency}}</b></p>
+						<p class="card-title text-center">{{product.name}}</p>
 						<!-- {{product | is_in_cart:request.session.cart }} -->
 					</div>
-					{% if request.session.customer %}
+					<div class="clearfix mb-3">
+						{% if product.stock %}
+						<span class="float-start badge rounded-pill bg-success">Disponible</span>
+						<span class="float-end price-hp">{{product.price|currency}}</span>
+						<br>
+						<br>
+						<h5 class="card-title">
+							{{product.description}}
+						</h5>
+						{% if request.session.customer %}
 						<div class="card-footer p-0 no-gutters">
 							{% if product|is_in_cart:request.session.cart %}
 							<div class="row no-gutters">
@@ -54,15 +62,29 @@
 								</form>
 							</div>
 							{% else %}
-								<form action="/#{{product.id}}" method="POST" class="btn-block">
-									{% csrf_token %}
-									<input hidden type="text" name="product" value="{{product.id}}" />
-									<input type="submit" class="float-right btn btn-primary form-control"
-										value="Agregar a carrito" />
-								</form>
+							<form action="/#{{product.id}}" method="POST" class="btn-block">
+								{% csrf_token %}
+								<input hidden type="text" name="product" value="{{product.id}}" />
+								<input type="submit" class="float-right btn btn-primary form-control"
+									value="Agregar a carrito" />
+							</form>
 							{% endif %}
 						</div>
-					{% endif %}
+						{% endif %}
+						{% else %}
+						<br>
+						<span class="float-start badge rounded-pill bg-danger">Agotado</span>
+						<span class="float-end price-hp">{{product.price|currency}}</span>
+						<br>
+						<br>
+						<h5 class="card-title">
+							{{product.description}}
+						</h5>
+						{% endif%}
+						
+					</div>
+
+
 				</div>
 				{% endfor %}
 			</div>
