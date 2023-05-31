@@ -1,6 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Eliminar producto {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
 <!-- eliminar_producto.html -->
-<p>¿Estás seguro de que deseas eliminar el producto "{{ producto.nombre }}"?</p>
-<form id="form-eliminacion" method="post" action="{% url 'eliminar_producto' producto.id %}">
-  {% csrf_token %}
-  <input type="submit" value="Eliminar">
-</form>
+<div class="card mx-auto mt-3 container">
+  <p class="mt-3 ms-3 me-3">¿Estás seguro de que deseas eliminar el producto "{{ producto.nombre }}"?</p>
+  <form id="form-eliminacion" method="post" action="{% url 'eliminar_producto' producto.id %}">
+    {% csrf_token %}
+    <input class="btn btn-danger ms-3 mb-3" type="submit" value="Eliminar">
+    <a class="btn btn-secondary ms-3 mb-3" href="{% url 'perfil' %}">Cancelar</a>
+  </form>
+</div>
+
+
+{% endblock %}

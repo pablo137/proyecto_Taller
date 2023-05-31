@@ -13,7 +13,7 @@ from .middlewares.auth import auth_middleware
 
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('', Index.as_view(), name='homepage'),
     path('home', home, name='home'),
     path('condiciones', condiciones_uso, name='condiciones'),
     path('privacidad', privacidad, name='privacidad'),

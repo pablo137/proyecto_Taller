@@ -6,46 +6,20 @@
 <h1>Perfil:</h1>
 <hr>
 
-
-<div class="container">
-    <div class="card row">
-        <div class="col-12 mt-5 mb-5 ms-3">
-            <img src="{{profile.img.url}}" alt="" class="float-left mr-5" style="width: 300px;">
-            <br>
-            <h5><strong>Nombre de usuario:</strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
-            <br>
-            <h5><strong>Correo electrónico:</strong> {{ profile.user.email }}</h5>
-            <br>
-            <h5><strong>Bio:</strong> </h5>
-            <p>{{ profile.bio }}</p>
-            <div class="position-absolute-bottom">
-                <a class="btn btn-info me-3" href="{% url 'edit_perfil' %}">Editar perfil</a>
-                <a class="btn btn-info me-3" href="{% url 'ver_productos' %}">Ver tus productos</a>
-                {% if profile.user.rol == 'cliente' %}
-                <p>Eres consumidor no puedes crear productos</p>
-                {% else %}
-                <a class="btn btn-info me-3" href="{% url 'crear_producto' %}">Crear producto</a>
-                <p>Eres un emprendedor puedes crear productos</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
-
-<section style="background-color: #eee;">
-    <div class="container py-5">
+<section>
+    <div class="container py-0">
 
         <div class="row">
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">John Smith</h5>
-                        <p class="text-muted mb-1">Full Stack Developer</p>
-                        <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                        <img src="{{profile.img.url}}" alt="avatar" class="card-img-top"
+                            style="width: 150px;">
+                        <h5 class="mt-3 card-title text-primary">@{{ profile.user.first_name | upper }}  
+                        </h5>
+                        <p class="text-muted mb-1">{{ profile.user.rol | upper }}</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Editar Perfil</button>
+                            <a href="{% url 'edit_perfil' %}" class="btn btn-sm btn-primary">Editar Perfil</a>
                         </div>
                     </div>
                 </div>
@@ -54,14 +28,16 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">TU INFORMACION</p>
+                            <div class="text-center">
+                                <h2>
+                                    <p class="mb-0">TU INFORMACION</p>
+                                </h2>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Nombres</p>
+                                <p class="mb-0"><strong>Nombres</strong></p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ profile.user.first_name }}</p>
@@ -70,7 +46,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Apellidos</p>
+                                <p class="mb-0"><strong>Apellidos</strong></p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ profile.user.last_name }}</p>
@@ -79,7 +55,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Correo</p>
+                                <p class="mb-0"><strong>Correo</strong></p>
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{ profile.user.email }}</p>
@@ -88,17 +64,24 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Biografia</p>
+                                <p class="mb-0"><strong>Telefono</strong></p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">profile.bio</p>
+                                <p class="text-muted mb-0">{{ profile.user.phone }}</p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col-sm-3">
-                                <button type="button" class="btn btn-primary">Mis productos</button>
+                            {% if profile.user.rol == 'cliente' %}
+                            <!-- <p>Eres consumidor no puedes crear productos</p> -->
+                            <div></div>
+                            {% else %}
+                            <div class="d-flex justify-content-left mb-2 ms-2">
+                                <a class="btn btn-primary d-flex justify-content-center mb-2"
+                                    href="{% url 'ver_productos' %}">Mis productos</a>
                             </div>
+                            <!-- <p>Eres un emprendedor puedes crear productos</p> -->
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -107,43 +90,5 @@
     </div>
 </section>
 
-
-<!-- <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-    <h4 id="scrollspyHeading1">First heading</h4>
-    <p></p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
-        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
-        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
-    <h4 id="scrollspyHeading2">Second heading</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
-        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
-        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
-        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
-        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
-    <h4 id="scrollspyHeading3">Third heading</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
-        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
-        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quo perferendis distinctio praesentium sapiente
-        nesciunt ratione maxime voluptatem error dignissimos et molestiae consequatur, sed a repellat animi laudantium
-        illum eius impedit ipsam blanditiis aperiam modi. Ullam iste facilis maiores sunt.</p>
-    <img src="{{profile.img.url}}" alt="" class="rounded-circle mr-5" style="width: 300px;">
-    <img src="{{profile.img.url}}" alt="" class="frounded-circle mr-5" style="width: 300px;">
-    <h4 id="scrollspyHeading4">Fourth heading</h4>
-    <p>...</p>
-    <h4 id="scrollspyHeading5">Fifth heading</h4>
-    <p>...</p>
-</div> -->
 
 {% endblock %}
